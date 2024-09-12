@@ -156,7 +156,62 @@ namespace Part_7_Lists_Assignment
         public static void ListString()
         {
             List<string> veges = new List<string>();
+            veges.Add("carrot");
+            veges.Add("beet");
+            veges.Add("celery");
+            veges.Add("raddish");
+            veges.Add("cabbage");
 
+            Console.WriteLine("List of Vegetables:");
+            for (int i = 0; i < veges.Count; i++)
+            {
+                Console.WriteLine((i + 1) + " - " + veges[i].ToUpper());
+            }
+            Console.WriteLine();
+            Console.WriteLine("1 - Remove a vegetable by entering its index\n" +
+                "2 - Remove a vegetable by entering its name\n" +
+                "3 - Search for a vegetable by its name\n" +
+                "4 - Add a vegetable\n" +
+                "5 - Sort the list\n" +
+                "6 - Clean the list");
+            int option;
+            while (!int.TryParse(Console.ReadLine(), out option) || option > 6 || option < 1)
+            {
+                Console.WriteLine("Please enter a valid input.");
+            }
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Please enter the index of the vegetable you want to remove!");
+                    int index;
+                    while (!int.TryParse(Console.ReadLine(),out index)||index > veges.Count||index < 1)
+                    {
+                        Console.WriteLine("Please enter a valid index.");
+                    }
+                    veges.RemoveAt(index);
+                    break;
+                case 2:
+                    Console.WriteLine("Please enter the vegetable you want to remove!");
+                    string vege_to_remove = Console.ReadLine();
+                    if (veges.Remove(vege_to_remove.ToLower()))
+                    {
+                        Console.WriteLine(vege_to_remove.ToUpper() +" is removed from the list.");
+                    }
+                    else
+                    {
+                        Console.WriteLine(vege_to_remove.ToUpper() + " is not found in the list.");
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Please enter the vegetable you want to search!");
+                    string vege_to_search = Console.ReadLine();
+                    bool find(string s)
+                    {
+                        return s == vege_to_search.ToLower();
+                    }
+                    Console.WriteLine(veges.Find(find));
+                    break;
+            }
         }
     }
 }
