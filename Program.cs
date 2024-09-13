@@ -198,6 +198,7 @@ namespace Part_7_Lists_Assignment
                         string vege_to_remove = Console.ReadLine();
                         if (string.IsNullOrEmpty(vege_to_remove))
                         {
+                            Console.WriteLine("Empty Input");
                             break;
                         }
                         if (veges.Remove(vege_to_remove.ToLower()))
@@ -212,6 +213,11 @@ namespace Part_7_Lists_Assignment
                     case 3:
                         Console.WriteLine("Please enter the vegetable you want to search!");
                         string vege_to_search = Console.ReadLine();
+                        if (string.IsNullOrEmpty(vege_to_search))
+                        {
+                            Console.WriteLine("Empty Input");
+                            break;
+                        }
                         bool find(string s)
                         {
                             return s == vege_to_search.ToLower();
@@ -228,6 +234,11 @@ namespace Part_7_Lists_Assignment
                     case 4:
                         Console.WriteLine("Please enter the vegetable you want to add!");
                         string vege_to_add = Console.ReadLine().ToLower();
+                        if (string.IsNullOrEmpty(vege_to_add))
+                        {
+                            Console.WriteLine("Empty Input");
+                            break;
+                        }
                         if (veges.Contains(vege_to_add.ToLower()))
                         {
                             Console.WriteLine(vege_to_add.ToUpper() + " is already in the list.");
